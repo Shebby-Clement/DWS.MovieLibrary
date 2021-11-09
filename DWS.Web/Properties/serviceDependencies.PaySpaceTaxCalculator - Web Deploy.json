@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "apis1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/PaySpaceTaxCalculatorWebapi/apis/PaySpaceTaxCalculatorWeb",
+      "type": "apis.azure"
+    },
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/payspaceserver/databases/DWS.MovieLibrary.Web_db",
+      "type": "mssql.azure",
+      "connectionId": "ConnStr",
+      "secretStore": null
+    }
+  }
+}

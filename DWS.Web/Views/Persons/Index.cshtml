@@ -1,0 +1,68 @@
+﻿@model IEnumerable<DWS.MovieLibrary.Domain.Dtos.PersonDto>
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Persons</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-controller="Persons" asp-action="Create" class="btn btn-primary">
+                <i class="fas fa-plus"></i> &nbsp; Add New Person
+            </a>
+        </div>
+    </div>
+
+    <br /><br />
+
+    @if (Model.Count() > 0)
+    {
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                FirstName
+            </th>
+            <th>
+                LastName
+            </th>
+            <th>
+                Gender
+            </th>
+            <th>
+                Role
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+<tr>
+    <td width="20%">@obj.FirstName</td>
+    <td width="20%">@obj.LastName</td>
+    <td width="20%">@Html.Raw(DWS.MovieLibrary.Core.Helpers.OtherHelpers.GetEnumValue<@DWS.MovieLibrary.Domain.Models.Enum.Gender>(@obj.Gender))</td>
+    <td width="20%">@Html.Raw(DWS.MovieLibrary.Core.Helpers.OtherHelpers.GetEnumValue<@DWS.MovieLibrary.Domain.Models.Enum.Role>(@obj.Role))</td>
+
+
+    <td class="text-center">
+        <div class="w-75 btn-group" role="group">
+           
+
+            <a asp-controller="Persons" asp-route-Id="@obj.ID" asp-action="DeleteRecord" class="btn btn-danger mx-2">
+                <i class="far fa-trash-alt"></i>
+            </a>
+        </div>
+    </td>
+</tr>}
+    </tbody>
+</table> }
+else
+{
+<p> No Person(s) exist.</p>}
+
+
+    <div class="col-6 text-left">
+        <a asp-controller="Movies" asp-action="Index" class="btn btn-primary"> Back</a>
+    </div>
+
+</div>
